@@ -123,11 +123,20 @@ def run(cfg):
         pred_proj=predictor_proj,
     )
 
+    # Estimate total steps for scheduler
+    n_train = int(len(dataset) * cfg.train_split)
+    steps_per_epoch = n_train // cfg.loader.batch_size
+    total_steps = steps_per_epoch * cfg.trainer.max_epochs
+
     optimizers = {
         'model_opt': {
             "modules": 'model',
             "optimizer": dict(cfg.optimizer),
-            "scheduler": {"type": "LinearWarmupCosineAnnealingLR"},
+            "scheduler": {
+                "type": "LinearWarmupCosineAnnealingLR",
+                "warmup_steps": max(1, int(0.01 * total_steps)),
+                "max_steps": total_steps,
+            },
             "interval": "epoch",
         },
     }

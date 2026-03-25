@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+outputs/
+*.egg-info/
+environment_v*.json
+requirements_frozen_v*.txt

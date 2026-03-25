@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LeWorldModel - Inference Animations</title>
+<style>
+body { background: #1a1a2e; color: #eee; font-family: system-ui; text-align: center; padding: 20px; }
+h1 { color: #e94560; }
+h2 { color: #0f3460; background: #e94560; display: inline-block; padding: 6px 18px; border-radius: 6px; margin-top: 30px; }
+img { max-width: 90%; border: 2px solid #333; border-radius: 8px; margin: 10px 0 30px; }
+p { color: #aaa; max-width: 700px; margin: 0 auto 10px; }
+</style>
+</head>
+<body>
+<h1>LeWorldModel (LeWM) - Inference Animations</h1>
+<p>18M param JEPA trained end-to-end on PushT | 4 epochs on Mac MPS</p>
+<hr style="border-color:#333">
+
+<h2>1. Latent Trajectory</h2>
+<p>Agent moves through PushT environment. Latent embeddings traced in PCA space with prediction errors.</p>
+<img src="lewm_latent_trajectory.gif">
+
+<h2>2. Planning Rollout</h2>
+<p>128 action candidates rolled out in 0.5s. Green = best plan, Red = worst. Cost distribution on the right.</p>
+<img src="lewm_planning.gif">
+
+<h2>3. Embedding Space (Anti-Collapse)</h2>
+<p>500 frames encoded — SIGReg prevents representation collapse. Embeddings spread with diverse norms.</p>
+<img src="lewm_embeddings.gif">
+</body>
+</html>
